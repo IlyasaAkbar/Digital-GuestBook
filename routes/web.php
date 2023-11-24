@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controller\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::get('/about', function () {
+    return view('about',[
+        "name" => "Ilyasa Akbar Astira",
+        "email" => "yasslimit01@gmail.com",
+        "image" => "omenn aing.PNG"
+    ]);
+});
+
+Route::get('/contact', function (){
+    return view('contact');
+});
+Route::get('/blog', function (){
+    return view('post');
+});
+
+Route::get('/halaman',[BookController::class,'index'])->name('halaman');
+
+Route::get('/view','MatchCon@perkalian');
+Route::get('/create','MatchCon@perkalian');
+Route::get('/update','MatchCon@perkalian');
+Route::get('/delete','MatchCon@perkalian');
